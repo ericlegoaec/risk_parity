@@ -135,6 +135,14 @@ def get_weights(yahoo_tickers=['GOOGL', 'AAPL', 'AMZN'],
     weights = pd.Series(weights, index=data.columns, name='weight')
 
     labels = ['SPY', 'AGG']
+    plt.figure('Risk')
+    plt.pie(assets_risk_budget, labels=labels, startangle=90, autopct='%.0f%%')
+    plt.title('Target distribution of risk')
+    plt.tight_layout()
+    plt.show()
+
+    # print out graph showing large holding in bonds (which are lower risk) where the risk is evenly divided by asset
+    labels = ['SPY', 'AGG']
     plt.figure('Risk Dist')
     plt.pie(weights, labels=labels, startangle=90, autopct='%.0f%%')
     plt.title(f'Risk Distribution {start_date} to {end_date}')
